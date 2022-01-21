@@ -1,0 +1,37 @@
+function processData(input) {
+  //Enter your code here
+  const inputFixed = input.split("\n");
+  const numN = parseInt(inputFixed[0]);
+  const phoneBook = inputFixed.slice(1, numN + 1);
+
+  var inputObject = {};
+
+  phoneBook.forEach((item) => {
+    const tempEle = item.split(" ");
+
+    inputObject[tempEle[0]] = +tempEle[1];
+  });
+
+  const names = inputFixed.slice(numN + 1);
+
+  for (let i = 0; i < names.length; i++) {
+    let key = names[i];
+    let val = inputObject[key];
+    if (val) {
+      console.log(`${key}=${val}`);
+    } else {
+      console.log("Not found");
+    }
+  }
+}
+
+process.stdin.resume();
+process.stdin.setEncoding("ascii");
+_input = "";
+process.stdin.on("data", function (input) {
+    _input += input;
+});
+
+process.stdin.on("end", function () {
+   processData(_input);
+});
