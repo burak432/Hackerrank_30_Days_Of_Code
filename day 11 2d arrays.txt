@@ -1,0 +1,21 @@
+function main() {
+
+    let arr = Array(6);
+
+    for (let i = 0; i < 6; i++) {
+        arr[i] = readLine().replace(/\s+$/g, '').split(' ').map(arrTemp => parseInt(arrTemp, 10));
+    }
+    
+    let sumsArr = [];
+
+    for (let i = 0; i <= 3; i++){
+      for(let j = 0; j <= 3; j++) {
+        let toprow = arr[i][j] + arr[i][j+1] + arr[i][j+2];
+        let mid = arr[i+1][j+1];
+        let botrow = arr[i+2][j] + arr[i+2][j+1] + arr[i+2][j+2];
+        let total = toprow + mid + botrow;
+    sumsArr.push(total);
+  }
+}
+    console.log(Math.max(...sumsArr));
+}
